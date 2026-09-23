@@ -43,6 +43,14 @@ prices = [S0]
 current_price = S0
 forward_prices = [Fprices(S0, R_annual, T_maturity)] 
 
+print("--------------------------------------------------")
+
+print(f"Initial Stock Price (S0): {S0:.2f}$")
+print(f"Annual Risk-Free Rate (R): {R_annual * 100:.2f}%")
+print(f"Daily Step Volatility: +/- {r_step * 100:.2f}%")
+print(f"Forward Contract Maturity: {T_maturity} years")
+
+
 for i in range(1, n + 1):
     toss = rd.random()
     if toss < prob:
@@ -59,6 +67,12 @@ for i in range(1, n + 1):
     
     f_price = Fprices(current_price, R_annual, time_to_maturity)
     forward_prices.append(f_price)
+
+
+print("--------------------------------------------------")
+print(f"Final Stock Price after {num_years} years: {current_price:.2f}$")
+print(f"Final Forward Price after {num_years} years: {forward_prices[-1]:.2f}$")
+print("--------------------------------------------------")
 
 # -----------------------------------------
 # PLOT
